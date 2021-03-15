@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.staticfile.org/vue/2.4.2/vue.min.js"></script>
+    <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+</head>
+<style>
+    .dp_top_amount{
+
+    }
+    .button {
+        background-color: #008CBA; /* Green */
+        border: none;
+        color: white;
+        padding: 10px 15px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 10px;
+    }
+    .dp_top_amount button{
+        float: left;
+        width:20px;
+        height:22px;
+        cursor: pointer;
+        background:#fff;
+        border:1px solid #ccc;
+    }
+    .dp_top_amount input{
+        float: left;
+        height:18px;
+        width:36px;
+        line-height:20px;
+        vertical-align: middle;
+        text-align: center;
+        border-left: none;
+        border-right: none;
+        border:1px solid #ccc;
+    }
+</style>
+<body>
+<!--<div class="dp_top_amount">-->
+<!--<span>数量</span>-->
+<!--<button type="button" onclick="decrease()">-</button>-->
+<!--<input id="num"  type="text" value="1"/>-->
+<!--<button type="button" onclick="add()">+</button>-->
+<!--</div>-->
+<!--<div id="vue_dat" class="dp_top_amount">-->
+    <!--<button  v-on:click="decrease">-</button>-->
+    <!--<input  v-model="counter" type="text"  v-on:change="change" />-->
+    <!--<button  v-on:click="add">+</button>-->
+<!--</div>-->
+<!--<div id="vue_dat" class="dp_top_amount">-->
+    <!--<span>数量</span>-->
+    <!--<button  v-on:click="decrease">-</button>-->
+    <!--&lt;!&ndash;<p>{{counter}}</p>&ndash;&gt;-->
+    <!--<input v-model="'counter"  type="text" value="1"  v-on:onchange="change"/>-->
+    <!--<button  v-on:click="add">+</button>-->
+<!--</div>-->
+<!--<div id="demo">-->
+    <!--<button-test></button-test>-->
+<!--</div>-->
+
+<div id="demo">
+    <p style="height: 10px">doctor</p>
+    <button-test></button-test></br>
+    <p style="height: 5px">patient</p>
+    <button-test></button-test>
+</div>
+</br>
+<button id="hide" class ="button" type="button">hide</button>
+<button id ="show" class ="button" type="button">show</button>
+<div id="demo2">
+    <p>doctor</p>
+    <button-test></button-test></br>
+    <p>patient</p>
+    <button-test></button-test>
+    <button-test></button-test>
+</div>
+<script type="text/javascript">
+    $("#demo").hide();
+    $(document).ready(function () {
+        $("#hide").click(function () {
+            $("#demo").hide();
+            $("#demo2").show();
+        })
+        $("#show").click(function () {
+            $("#demo").show();
+            $("#demo2").hide();
+        })
+    })
+    var example = new Vue({
+        el:"#vue_dat",
+        data:{
+            counter:0
+        },
+        methods:{
+            add:function () {
+                this.counter++;
+            },
+            decrease:function () {
+                if(this.counter>0){
+                    this.counter-=1;
+                }
+            },change:function () {
+
+            }
+        }
+    })
+    Vue.component('button-test',{
+        data: function(){
+            return {
+                counter:0
+            }
+        },
+        methods:{
+            add:function () {
+                this.counter++;
+            },
+            decrease:function () {
+                if(this.counter>0){
+                    this.counter-=1;
+                }
+            },change:function () {
+
+            }
+            },
+        template:'<div id="vue_dat" class="dp_top_amount">\n' +
+            '    <button  v-on:click="decrease">-</button>\n' +
+            '    <input  v-model="counter" type="text"  v-on:change="change" />\n' +
+            '    <button  v-on:click="add">+</button>\n' +
+            '</div>'
+    })
+    new Vue({ el: '#demo' })
+    new Vue({ el: '#demo2' })
+
+</script>
+</body>
+</html>
